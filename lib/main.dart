@@ -1,4 +1,7 @@
 import 'package:aplikasi_bank_soal/screens/auth/login.dart';
+import 'package:aplikasi_bank_soal/screens/admin/admin_dashboard.dart';
+import 'package:aplikasi_bank_soal/screens/admin/leaderboard_page.dart';
+import 'package:aplikasi_bank_soal/screens/admin/question_bank_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,6 +23,11 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const LoginPage(),
+      routes: {
+        '/admin': (_) => const AdminDashboardPage(),
+        '/admin/questions': (_) => const QuestionBankPage(),
+        '/admin/leaderboard': (_) => const LeaderboardPage(),
+      },
     );
   }
 }

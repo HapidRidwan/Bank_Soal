@@ -405,7 +405,9 @@ class _LoginPageState extends State<LoginPage>
   void _handleLogin() {
     FocusScope.of(context).unfocus();
 
-    if (identityController.text.trim().isEmpty ||
+    final identity = identityController.text.trim();
+
+    if (identity.isEmpty ||
         passwordController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -417,6 +419,15 @@ class _LoginPageState extends State<LoginPage>
           ),
         ),
       );
+      return;
+    }
+
+    final normalizedIdentity = identity.toLowerCase();
+    final isAdmin = normalizedIdentity == 'admin' ||
+        normalizedIdentity.startsWith('admin@');
+
+    if (isAdmin) {
+      Navigator.of(context).pushReplacementNamed('/admin');
       return;
     }
 
