@@ -32,6 +32,25 @@ npm run dev
 
 API berjalan di `http://localhost:3000`. Cek koneksi database di `http://localhost:3000/health`.
 
+### Membuat akun admin
+
+Daftarkan akun melalui aplikasi terlebih dahulu, lalu ubah role akun tersebut di MySQL:
+
+```sql
+UPDATE users SET role = 'admin' WHERE email = 'admin@example.com';
+```
+
+Schema juga menyediakan dua akun demo:
+
+| Role | Email | Password |
+| --- | --- | --- |
+| Admin | `admin@banksoal.test` | `Admin123!` |
+| User | `user@banksoal.test` | `User123!` |
+
+Jalankan `database/schema.sql` setelah database dibuat agar akun demo tersedia. Login admin akan diarahkan ke dashboard admin, sedangkan login user akan diarahkan ke dashboard user.
+
+Saat akun admin login, aplikasi mobile akan mengarahkannya ke dashboard admin.
+
 Untuk Android emulator, alamat API host bukan `localhost`, melainkan `10.0.2.2:3000`. Untuk device fisik, gunakan IP komputer pada jaringan lokal, misalnya `192.168.1.10:3000`.
 
 ## Endpoint autentikasi

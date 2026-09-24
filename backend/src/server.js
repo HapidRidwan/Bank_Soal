@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const pool = require('./db');
 const authRoutes = require('./routes/auth.routes');
 const studentRoutes = require('./routes/student.routes');
+const adminRoutes = require('./routes/admin.routes');
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.get('/health', async (_req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/student', studentRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.use((error, _req, res, _next) => {
   if (error.code === 'ER_DUP_ENTRY') {

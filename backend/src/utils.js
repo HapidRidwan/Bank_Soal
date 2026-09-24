@@ -14,9 +14,9 @@ function publicUser(user) {
     username: user.username,
     email: user.email,
     fullName: user.full_name,
+    role: user.role || 'user',
     avatarUrl: user.avatar_url,
     provider: user.provider,
-    role: user.role,
   };
 }
 

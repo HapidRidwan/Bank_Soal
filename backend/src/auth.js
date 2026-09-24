@@ -13,7 +13,7 @@ function requireSecret(name) {
 
 function createAccessToken(user) {
   return jwt.sign(
-    { sub: String(user.id), role: user.role, email: user.email },
+    { sub: String(user.id), email: user.email, role: user.role || 'user' },
     requireSecret('JWT_ACCESS_SECRET'),
     { expiresIn: process.env.JWT_ACCESS_EXPIRES || '15m' },
   );
